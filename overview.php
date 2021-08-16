@@ -10,12 +10,19 @@
 <body>
 
 <h1>Goodcard - track your collection of MyLittlePony cards</h1>
+<form method="post">
+    <ul>
+        <?php foreach ($cards as $i => $card) : ?>
+            <li>
+                <input type="checkbox" value="<?php echo $card['id']?>" name="pony_id_<?php echo $i?>" id="<?php echo $card['id']?>" >
+                <?= $card['name'] ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <button type="submit">Remove Selected Items?</button>
+</form>
 
-<ul>
-    <?php foreach ($cards as $card) : ?>
-        <li><?= $card['name'] ?></li>
-    <?php endforeach; ?>
-</ul>
+<a href="update.php">Update Exiting Name</a>
 
 </body>
 </html>

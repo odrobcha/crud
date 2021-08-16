@@ -13,10 +13,16 @@ class CardRepository
         $this->databaseManager = $databaseManager;
     }
 
-    public function create($ponyName)
+    public function create($ponyName) : void
     {
-        $sql = "INSERT INTO `crud.ponies` (`name`) VALUES ('Apple Bloom2')";
-        $this->databaseManager->connection->execute($sql);
+        $data = [                                                                //data to be inserted into DB
+            'name' => $ponyName,
+        ];
+        $sql = "INSERT INTO crud.ponies (name) VALUES (:name)";               // create qsl query (to insert data to DB)
+        $this->databaseManager->connect()->prepare($sql)->execute($data);     // chaining 2 things: 1.prepare($sql) 2.execute($data) query with certain data = $data
+        $_POST['pony-name'] = '';                                             // clear $_POST['pony-name']
+        header("Refresh:0");                                         //refresh page automatically
+
     }
 
     // Get one
@@ -29,14 +35,8 @@ class CardRepository
     public function get()
     {
         $sql = "SELECT * FROM crud.ponies";
-
-        $result = $this->databaseManager->connection->query($sql)->fetchAll();  // get data form DB based on query
-
-
+        $result = $this->databaseManager->connect()->query($sql);  // get data form DB based on query
         return $result;
-
-        // We get the database connection first, so we can apply our queries with it
-        // return $this->databaseManager->connection-> (runYourQueryHere)
     }
 
     public function update()
@@ -46,7 +46,31 @@ class CardRepository
 
     public function delete()
     {
+        $checkedItems = $this->checkboxesAreEmpty();
+        if(empty($checkedItems)){
+            return;
+        }
+        foreach ($checkedItems as $checkedItem) {
+            foreach ($checkedItem as $checkedId){
+                $sql = "DELETE FROM crud.ponies WHERE `id`="  .(int)$checkedId;
+                $this->databaseManager->connect()->query($sql);
+            }
+            header("Refresh:0");
+        }
 
     }
+
+    public function checkboxesAreEmpty(){
+        $checkedItems = [];
+        foreach ($_POST as $key => $value){
+            if(isset($_POST[$key])){
+                $tempArray = [$key => $value];
+                array_push($checkedItems, $tempArray);
+            }
+        }
+
+        return $checkedItems;
+    }
+
 
 }

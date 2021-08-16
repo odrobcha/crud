@@ -21,9 +21,13 @@ $databaseManager->connect();
 $cardRepository = new CardRepository($databaseManager);
 $cards = $cardRepository->get();
 
-if (isset($_POST["pony-name"])){
-   $cardRepository->create($_POST["pony-name"]);
+if (isset($_POST["ponyName"])){
+    $cardRepository->create($_POST["ponyName"]);
 }
+    $cardRepository->delete();
+
+
+
 
 // Load your view
 // Tip: you can load this dynamically and based on a variable, if you want to load another view
