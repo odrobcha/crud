@@ -21,7 +21,7 @@ class CardRepository
         $sql = "INSERT INTO crud.ponies (name) VALUES (:name)";               // create qsl query (to insert data to DB)
         $this->databaseManager->connect()->prepare($sql)->execute($data);     // chaining 2 things: 1.prepare($sql) 2.execute($data) query with certain data = $data
         $_POST['pony-name'] = '';                                             // clear $_POST['pony-name']
-        header("Refresh:0");                                         //refresh page automatically
+       header("Refresh:0");                                         //refresh page automatically
 
     }
 
@@ -47,6 +47,9 @@ class CardRepository
     public function delete()
     {
         $checkedItems = $this->checkboxesAreEmpty();
+       // var_dump('<pre>');
+        //var_dump($checkedItems);
+       // var_dump('</pre>');
         if(empty($checkedItems)){
             return;
         }
@@ -55,18 +58,17 @@ class CardRepository
                 $sql = "DELETE FROM crud.ponies WHERE `id`="  .(int)$checkedId;
                 $this->databaseManager->connect()->query($sql);
             }
-            header("Refresh:0");
+
+           header("Refresh:0");
         }
 
     }
 
     public function checkboxesAreEmpty(){
         $checkedItems = [];
-        foreach ($_POST as $key => $value){
-            if(isset($_POST[$key])){
-                $tempArray = [$key => $value];
-                array_push($checkedItems, $tempArray);
-            }
+        if(!empty($_POST['delete_pony'])){
+            $chosenItem=$_POST['delete_pony'];
+            array_push($checkedItems, $chosenItem);
         }
 
         return $checkedItems;

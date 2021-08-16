@@ -14,9 +14,13 @@
     <ul>
         <?php foreach ($cards as $i => $card) : ?>
             <li>
-                <input type="checkbox" value="<?php echo $card['id']?>" name="pony_id_<?php echo $i?>" id="<?php echo $card['id']?>" >
+                <input type="checkbox"
+                       value="<?php echo $card['id']?>"
+                       name="delete_pony[]"
+                       id="<?php echo $card['id']?>" >
                 <?= $card['name'] ?>
             </li>
+
         <?php endforeach; ?>
     </ul>
     <button type="submit">Remove Selected Items?</button>
