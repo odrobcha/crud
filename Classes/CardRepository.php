@@ -27,11 +27,12 @@ class CardRepository
     // Get all
     public function get()
     {
-        // TODO: replace dummy data by real one
-        return [
-            ['name' => 'dummy one'],
-            ['name' => 'dummy two'],
-        ];
+        $sql = "SELECT * FROM crud.ponies";
+
+        $result = $this->databaseManager->connection->query($sql)->fetchAll();  // get data form DB based on query
+        var_dump($result);
+
+        return $result;
 
         // We get the database connection first, so we can apply our queries with it
         // return $this->databaseManager->connection-> (runYourQueryHere)
