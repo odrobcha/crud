@@ -13,9 +13,10 @@ class CardRepository
         $this->databaseManager = $databaseManager;
     }
 
-    public function create()
+    public function create($ponyName)
     {
-
+        $sql = "INSERT INTO `crud.ponies` (`name`) VALUES ('Apple Bloom2')";
+        $this->databaseManager->connection->execute($sql);
     }
 
     // Get one
@@ -30,7 +31,7 @@ class CardRepository
         $sql = "SELECT * FROM crud.ponies";
 
         $result = $this->databaseManager->connection->query($sql)->fetchAll();  // get data form DB based on query
-        var_dump($result);
+
 
         return $result;
 
