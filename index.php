@@ -25,6 +25,7 @@ if (isset($_POST["ponyName"])){
     $cardRepository->create($_POST["ponyName"]);
 }
     $cardRepository->delete();
+$foundPonies = $cardRepository->find()?? [];
 
 
 
@@ -32,4 +33,3 @@ if (isset($_POST["ponyName"])){
 // Load your view
 // Tip: you can load this dynamically and based on a variable, if you want to load another view
 require 'overview.php';
-require 'create.php';
