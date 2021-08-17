@@ -7,6 +7,10 @@ class CardRepository
 {
     private $databaseManager;
     public string $message = '';
+    public array $test = [
+        ['name' => 'dummy one'],
+        ['name' => 'dummy two'],
+    ];
 
     // This class needs a database connection to function
     public function __construct(DatabaseManager $databaseManager)
@@ -14,6 +18,7 @@ class CardRepository
     {
         $this->databaseManager = $databaseManager;
         $this->foundPonies= [];
+
     }
 
     public function create($ponyName) : void
@@ -56,13 +61,20 @@ class CardRepository
     // Get all
     public function get()
     {
-        $sql = "SELECT * FROM crud.ponies";
-        $result = $this->databaseManager->connect()->query($sql);  // get data form DB based on query
-        return $result;
+        $sql = "SELECT * FROM ponies";
+        // get data form DB based on query
+        return $this->databaseManager->connect()->query($sql)->fetchAll();
     }
 
     public function update()
     {
+        if(isset($_POST['updatePony'])){
+            $id= (int)($_POST['updatePony'][1]);
+            $updatedName = ($_POST['updatePony'][0]);
+            $sql = "UPDATE `ponies` SET `id`=" .$id .",`name`='" .$updatedName ."' WHERE `id`=" .$id;
+            $this->databaseManager->connect()->query($sql);
+            header("Refresh:0");
+        }
 
     }
 

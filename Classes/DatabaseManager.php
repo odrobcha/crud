@@ -25,8 +25,8 @@ class DatabaseManager
     public function connect(): PDO
     {
         // TODO: make the connection to the database
-        $dsn = 'mysql:host=' .$this->host .';dbmane=' .$this->dbname;
-        $this->connection = new PDO($dsn, $this->user, $this->password); // create new PDO conection with the nex parameners : mysql:host, db name, and user name and passwrod (all data are from config.php)
+        $dsn = 'mysql:host=' .$this->host .';dbname=' .$this->dbname;
+        $this->connection = new PDO($dsn, $this->user, $this->password); // create new PDO connection with the nex parameters : mysql:host, db name, and user name and passwrod (all data are from config.php)
 
         $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); //to set the default mode of returning data (ASSOC - Associative array)
 

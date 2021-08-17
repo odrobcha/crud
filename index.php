@@ -24,8 +24,11 @@ $cards = $cardRepository->get();
 if (isset($_POST["ponyName"])){
     $cardRepository->create($_POST["ponyName"]);
 }
-    $cardRepository->delete();
+
+$cardRepository->delete();
 $foundPonies = $cardRepository->find()?? [];
+
+$cardRepository->update();
 
 
 

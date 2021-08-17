@@ -52,7 +52,24 @@
 </form>
 <br>
 <br>
-<a href="update.php">Update Exiting Name</a>
+<div>
+    <div>
+        <ul>
+            <?php foreach ($cards as $card) : ?>
+                <li class='pony-item' id="<?php echo $card['id']?>" data-name="<?php echo $card['name'] ?>">
 
+                    <?php echo $card['name'] ?>
+                </li>
+
+            <?php endforeach; ?>
+        </ul>
+
+    </div>
+</div>
+<div id="updatePony">
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
