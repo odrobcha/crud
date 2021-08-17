@@ -7,6 +7,7 @@ class CardRepository
 {
     private $databaseManager;
     public string $message = '';
+    public string $error='';
 
 
     // This class needs a database connection to function
@@ -28,12 +29,13 @@ class CardRepository
             $result = $this->databaseManager->connect()->prepare($sql)->execute($data);     // chaining 2 things: 1.prepare($sql) 2.execute($data) query with certain data = $data
             $_POST['pony-name'] = '';  // clear $_POST['pony-name']
             if($result) {
-                header("Refresh:0");    //refresh page automatically
+                $this->message = 'New pony created';
+               // header("Refresh:0");    //refresh page automatically
             } else {
-                $this->message = 'This pony name already exists';
+                $this->error = 'This pony name already exists';
             }
         } else {
-            $this->message = 'Pony name can not be empty string';
+            $this->error = 'Pony name can not be empty string';
         }
     }
 

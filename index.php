@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 require_once 'config.php';
 require_once 'Classes/DatabaseManager.php';
 require_once 'Classes/CardRepository.php';
-
+$page = $_GET['page'] ?? 'get';
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 

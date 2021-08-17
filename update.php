@@ -1,17 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Goodcard - track your collection of MyLittlePony cards</title>
-</head>
-<body>
+<div >
+    <h2>
+        Update Pony Name
+    </h2>
+    <h3>
+        Click on Pony, you want to update.
+    </h3>
+    <div class="update-pony">
+        <ul>
+            <?php foreach ($cards as $card) : ?>
+                <li class='pony-item' id="<?php echo $card['id']?>" data-name="<?php echo $card['name'] ?>">
 
-<h1>Update the name collection of MyLittlePony cards</h1>
-<?php echo $card['name'] ?>
+                    <?php echo $card['name'] ?>
+                </li>
+
+            <?php endforeach; ?>
+        </ul>
+        <div id="updatePony">
+        </div>
+
+    </div>
 
 
-</body>
-</html>
+</div>
