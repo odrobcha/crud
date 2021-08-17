@@ -8,6 +8,7 @@
 </form>
 <div class="error">
     <?php echo $cardRepository->error?>
+
 </div>
 <div class="message">
     <?php echo $cardRepository->message?>

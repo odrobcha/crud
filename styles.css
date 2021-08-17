@@ -44,6 +44,9 @@ body{
     color: black;
     text-decoration: none;
 }
+.delete-pony{
+    list-style: none;
+}
 .container{
     display: grid;
     grid-template-columns: 100%;
@@ -57,4 +60,19 @@ body{
 
 .found-ponies{
     margin-top: 20px;
+}
+
+.get-pony, .found-ponies{
+    display: grid;
+    grid-template-columns: 30% 40%;
+    grid-template-rows: 100%;
+    grid-auto-flow: row;
+}
+.get-pony #get-pony-img, .found-ponies #find-pony-img{
+    width: 400px;
+
+}
+
+.show-pony, .find-pony{
+    cursor: pointer;
 }

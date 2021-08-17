@@ -8,11 +8,17 @@
     <button type="submit">Find</button>
 </form>
 <div class="found-ponies">
+    <ul>
     <?php foreach ($foundPonies as $foundPony) : ?>
-        <div>
-            <?php echo $foundPony['name']?>
-        </div>
+
+            <li class="find-pony" data-name="<?php echo $foundPony['name'] ?>">
+                <?php echo $foundPony['name']?>
+            </li>
+
+
 
     <?php endforeach; ?>
+    </ul>
+    <img id="find-pony-img">
 </div>
 

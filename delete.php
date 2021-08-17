@@ -2,7 +2,7 @@
     Delete Pony Name
 </h2>
 <form method="post">
-    <ul>
+    <ul class="delete-pony">
         <?php foreach ($cards as $i => $card) : ?>
             <li>
                 <input type="checkbox"

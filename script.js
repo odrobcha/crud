@@ -1,5 +1,3 @@
-console.log('ok');
-
 let updatePonyCollection = document.querySelectorAll('.pony-item');
 
 
@@ -44,4 +42,36 @@ for (let pony of updatePonyCollection ){
     })
 
 }
+const showFirstImage = (selector, parentElement) =>{
+    let firstPony = document.querySelector(selector);
+    let ponyName=firstPony.getAttribute('data-name').toLowerCase();
+    let imgSrc = 'img/' + ponyName +'.png'
+    document.getElementById(parentElement).setAttribute('src', imgSrc);
+}
 
+
+const displayImg = (selector, parentElement) =>{
+
+    let showPonies = document.querySelectorAll(selector);
+
+    for (let pony of showPonies){
+        pony.addEventListener('click', ()=>{
+            let ponyName=pony.getAttribute('data-name').toLowerCase();
+            let imgSrc = 'img/' + ponyName +'.png'
+            document.getElementById(parentElement).setAttribute('src', imgSrc);
+            document.getElementById(parentElement).setAttribute('alt', 'no image found');
+
+            console.log(ponyName);
+        })
+    }
+}
+
+if (document.querySelector('.show-pony') != null){
+    showFirstImage('.show-pony', 'get-pony-img');
+    displayImg('.show-pony', 'get-pony-img');
+}
+
+if (document.querySelector('.find-pony') != null){
+    showFirstImage('.find-pony', 'find-pony-img');
+    displayImg('.find-pony', 'find-pony-img');
+}
