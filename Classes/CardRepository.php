@@ -7,10 +7,7 @@ class CardRepository
 {
     private $databaseManager;
     public string $message = '';
-    public array $test = [
-        ['name' => 'dummy one'],
-        ['name' => 'dummy two'],
-    ];
+
 
     // This class needs a database connection to function
     public function __construct(DatabaseManager $databaseManager)
@@ -24,20 +21,20 @@ class CardRepository
     public function create($ponyName) : void
     {
         $data = [                                                                //data to be inserted into DB
-            'name' => $ponyName,
+            'name' => trim($ponyName,' '),
         ];
         if($ponyName!=''){
-            $sql = "INSERT INTO crud.ponies (name) VALUES (:name)";               // create qsl query (to insert data to DB)
-            $this->databaseManager->connect()->prepare($sql)->execute($data);     // chaining 2 things: 1.prepare($sql) 2.execute($data) query with certain data = $data
-            $_POST['pony-name'] = '';                                             // clear $_POST['pony-name']
-            header("Refresh:0");                                         //refresh page automatically
-
+            $sql = "INSERT INTO ponies (name) VALUES (:name)";               // create qsl query (to insert data to DB)
+            $result = $this->databaseManager->connect()->prepare($sql)->execute($data);     // chaining 2 things: 1.prepare($sql) 2.execute($data) query with certain data = $data
+            $_POST['pony-name'] = '';  // clear $_POST['pony-name']
+            if($result) {
+                header("Refresh:0");    //refresh page automatically
+            } else {
+                $this->message = 'This pony name already exists';
+            }
         } else {
             $this->message = 'Pony name can not be empty string';
-
         }
-
-
     }
 
     // Get one
@@ -46,7 +43,10 @@ class CardRepository
         if(isset($_POST['findPony'])){
             if($_POST['findPony']!=''){
                 $sql = "SELECT * FROM crud.ponies WHERE name LIKE '%" .$_POST['findPony'] ."%'";
-                $result = $this->databaseManager->connect()->query($sql);  // get data form DB based on query
+                $result = $this->databaseManager->connect()->query($sql)->fetchAll();  // get data form DB based on query
+               if (empty($result)){
+                   $result = [['name'=>'No pony found']];
+               };
                 return $result;
             }
             else {

@@ -28,7 +28,7 @@ for (let pony of updatePonyCollection ){
 
 
         let newLabel = document.createElement('label');
-        newLabel.innerHTML='Update Pony Name';
+        newLabel.innerHTML='Update name ';
 
         let newButton=document.createElement('button');
         newButton.setAttribute('type', 'submit');
