@@ -68,11 +68,8 @@ class CardRepository
 
     public function delete()
     {
-        $checkedItems = $this->checkboxesAreEmpty();
-       // var_dump('<pre>');
-        //var_dump($checkedItems);
-       // var_dump('</pre>');
-        if(empty($checkedItems)){
+        $checkedItems = $this->checkboxesAreEmpty('delete_pony');
+            if(empty($checkedItems)){
             return;
         }
         foreach ($checkedItems as $checkedItem) {
@@ -86,9 +83,9 @@ class CardRepository
 
     }
 
-    public function checkboxesAreEmpty(){
+    public function checkboxesAreEmpty($postName){
         $checkedItems = [];
-        if(!empty($_POST['delete_pony'])){
+        if(!empty($_POST[$postName])){
             $chosenItem=$_POST['delete_pony'];
             array_push($checkedItems, $chosenItem);
         }
