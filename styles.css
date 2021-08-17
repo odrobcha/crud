@@ -19,8 +19,10 @@ body{
 }
 .error{
     color: indianred;
+    padding-top: 20px;
 }
 .message{
+    padding-top: 20px;
     color:#6aca3e;
 }
 .nav{
@@ -51,4 +53,8 @@ body{
 }
 .container{
     width: 80%;
+}
+
+.found-ponies{
+    margin-top: 20px;
 }

@@ -4,7 +4,7 @@
 <div>
     <ul>
         <?php foreach ($cards as $i => $card) : ?>
-            <li>
+            <li class="show-pony">
 
                 <?php echo $card['name'] ?>
             </li>

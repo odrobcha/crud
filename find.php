@@ -7,9 +7,12 @@
     <input type="text" id="findPony" name="findPony"/>
     <button type="submit">Find</button>
 </form>
-<?php foreach ($foundPonies as $foundPony) : ?>
-    <div>
-        <?php echo $foundPony['name']?>
-    </div>
+<div class="found-ponies">
+    <?php foreach ($foundPonies as $foundPony) : ?>
+        <div>
+            <?php echo $foundPony['name']?>
+        </div>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
+</div>
+
