@@ -1,5 +1,6 @@
 body{
     max-width: 100vw;
+    color: darkslategrey;
    /* overflow-x: hidden;*/
 }
 .update-pony{
@@ -41,8 +42,9 @@ body{
 }
 
 .nav a, .nav a:visited{
-    color: black;
+    color: darkslategrey;
     text-decoration: none;
+    font-size: 20px;
 }
 .delete-pony{
     list-style: none;
@@ -70,9 +72,14 @@ body{
 }
 .get-pony #get-pony-img, .found-ponies #find-pony-img{
     width: 400px;
-
 }
 
 .show-pony, .find-pony{
     cursor: pointer;
+}
+#find-pony-name, #get-pony-name{
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
 }

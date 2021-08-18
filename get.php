@@ -11,5 +11,9 @@
 
         <?php endforeach; ?>
     </ul>
-    <img id="get-pony-img">
+    <div>
+        <img id="get-pony-img">
+        <p id="get-pony-name"></p>
+    </div>
+
 </div>

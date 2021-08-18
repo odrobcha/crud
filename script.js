@@ -42,15 +42,16 @@ for (let pony of updatePonyCollection ){
     })
 
 }
-const showFirstImage = (selector, parentElement) =>{
+const showFirstImage = (selector, parentElement,paragraph) =>{
     let firstPony = document.querySelector(selector);
     let ponyName=firstPony.getAttribute('data-name').toLowerCase();
     let imgSrc = 'img/' + ponyName +'.png'
     document.getElementById(parentElement).setAttribute('src', imgSrc);
+    document.getElementById(paragraph).innerHTML=ponyName;
 }
 
 
-const displayImg = (selector, parentElement) =>{
+const displayImg = (selector, parentElement, paragraph) =>{
 
     let showPonies = document.querySelectorAll(selector);
 
@@ -59,19 +60,19 @@ const displayImg = (selector, parentElement) =>{
             let ponyName=pony.getAttribute('data-name').toLowerCase();
             let imgSrc = 'img/' + ponyName +'.png'
             document.getElementById(parentElement).setAttribute('src', imgSrc);
-            document.getElementById(parentElement).setAttribute('alt', 'no image found');
+            document.getElementById(parentElement).setAttribute('alt', 'No image found');
+            document.getElementById(paragraph).innerHTML=ponyName;
 
-            console.log(ponyName);
         })
     }
 }
 
 if (document.querySelector('.show-pony') != null){
-    showFirstImage('.show-pony', 'get-pony-img');
-    displayImg('.show-pony', 'get-pony-img');
+    showFirstImage('.show-pony', 'get-pony-img', 'get-pony-name');
+    displayImg('.show-pony', 'get-pony-img', 'get-pony-name');
 }
 
 if (document.querySelector('.find-pony') != null){
-    showFirstImage('.find-pony', 'find-pony-img');
-    displayImg('.find-pony', 'find-pony-img');
+    showFirstImage('.find-pony', 'find-pony-img', 'find-pony-name');
+    displayImg('.find-pony', 'find-pony-img', 'find-pony-name');
 }
