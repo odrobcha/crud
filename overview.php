@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Goodcard - track your collection of MyLittlePony cards</title>
-    <link href = 'styles.css ' rel="stylesheet"/>
+    <link href = 'styles/styles.css ' rel="stylesheet"/>
 </head>
 <body>
 <?php echo ' 
@@ -38,12 +38,12 @@
 
 
         <br>
-        <?php require $page . '.php' ?>
+        <?php require 'pages/' .$page . '.php' ?>
     </div>
 
 </div>
 
 
-<script src="script.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>
