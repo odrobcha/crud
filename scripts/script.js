@@ -47,6 +47,7 @@ const showFirstImage = (selector, parentElement,paragraph) =>{
     let ponyName=firstPony.getAttribute('data-name').toLowerCase();
     let imgSrc = 'img/' + ponyName +'.png'
     document.getElementById(parentElement).setAttribute('src', imgSrc);
+    document.getElementById(parentElement).setAttribute('alt', 'No image found');
     document.getElementById(paragraph).innerHTML=ponyName;
 }
 
