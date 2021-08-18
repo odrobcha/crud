@@ -27,7 +27,6 @@ if (isset($_POST["ponyName"])){
 
 $cardRepository->delete();
 $foundPonies = $cardRepository->find()?? [];
-
 $cardRepository->update();
 
 

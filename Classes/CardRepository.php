@@ -75,7 +75,9 @@ class CardRepository
             $updatedName = ($_POST['updatePony'][0]);
             $sql = "UPDATE `ponies` SET `id`=" .$id .",`name`='" .$updatedName ."' WHERE `id`=" .$id;
             $this->databaseManager->connect()->query($sql);
+
             header("Refresh:0");
+
         }
 
     }
@@ -92,7 +94,7 @@ class CardRepository
                 $this->databaseManager->connect()->query($sql);
             }
 
-           header("Refresh:0");
+            header('Location: /index.php' );
         }
 
     }
